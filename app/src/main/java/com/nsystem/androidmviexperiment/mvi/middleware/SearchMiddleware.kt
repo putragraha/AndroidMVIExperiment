@@ -15,6 +15,9 @@ import io.reactivex.Scheduler
  * @author Putra Nugraha (putra.nugraha@dana.id)
  * @version SearchMiddleware, v 0.0.1 11/10/20 16.23 by Putra Nugraha
  */
+/**
+ * These Middleware was to execute operations for Intent/Action {@link SearchAction}
+ */
 class SearchMiddleware(
     private val api: Api,
     private val uiScheduler: Scheduler
@@ -32,6 +35,5 @@ class SearchMiddleware(
                     .observeOn(uiScheduler)
                     .startWith(SearchAction.SearchLoadingAction)
             }
-
     }
 }

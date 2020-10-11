@@ -10,5 +10,8 @@ interface MviView<A: Action, S: State> {
 
     val actions: Observable<A>
 
+    /**
+     * render function is a must for View in MVI architecture
+     */
     fun render(state: S)
 }

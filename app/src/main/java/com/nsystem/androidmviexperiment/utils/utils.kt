@@ -9,6 +9,9 @@ import io.reactivex.functions.BiFunction
  * @author Putra Nugraha (putra.nugraha@dana.id)
  * @version utils, v 0.0.1 11/10/20 16.30 by Putra Nugraha
  */
+/**
+ * These only function extension
+ */
 inline fun <T, U, R> Observable<T>.withLatestFrom(
     other: ObservableSource<U>,
     crossinline combiner: (T, U) -> R

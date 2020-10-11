@@ -19,6 +19,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MviView<Action, UiState> {
 
+    /**
+     * These actions (Intent) will be bound to state in Store, check @actions below
+     */
     private val actionsObservable by lazyUi {
 
         val clicks = submitBtn.clicks().map {

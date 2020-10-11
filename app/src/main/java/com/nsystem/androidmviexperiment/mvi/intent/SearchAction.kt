@@ -8,6 +8,10 @@ import com.nsystem.androidmviexperiment.model.Champion
  * @author Putra Nugraha (putra.nugraha@dana.id)
  * @version SearchAction, v 0.0.1 11/10/20 16.16 by Putra Nugraha
  */
+/**
+ * SearchAction meant for Intent,
+ * but rather different with UiAction, this Action represent result from operations executed in Middleware
+ */
 sealed class SearchAction : Action {
 
     object SearchLoadingAction : SearchAction()

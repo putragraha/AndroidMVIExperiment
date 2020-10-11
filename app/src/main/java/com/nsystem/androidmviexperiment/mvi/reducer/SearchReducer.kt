@@ -11,6 +11,9 @@ import com.nsystem.androidmviexperiment.view.UiAction
  * @author Putra Nugraha (putra.nugraha@dana.id)
  * @version SearchReducer, v 0.0.1 11/10/20 16.14 by Putra Nugraha
  */
+/**
+ * These will return state based on action, @see Reducer
+ */
 class SearchReducer: Reducer<Action, UiState> {
 
     override fun reduce(state: UiState, action: Action): UiState {

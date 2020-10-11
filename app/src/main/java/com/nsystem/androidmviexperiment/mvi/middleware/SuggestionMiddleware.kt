@@ -15,7 +15,10 @@ import io.reactivex.Scheduler
  * @author Putra Nugraha (putra.nugraha@dana.id)
  * @version SuggestionMiddleware, v 0.0.1 11/10/20 18.05 by Putra Nugraha
  */
-class SuggestionsMiddleware(private val api: Api, private val uiScheduler: Scheduler) :
+/**
+ * These Middleware was to execute operations for Intent/Action {@link LoadSuggestionAction}
+ */
+class SuggestionMiddleware(private val api: Api, private val uiScheduler: Scheduler) :
     Middleware<Action, UiState> {
 
     override fun bind(actions: Observable<Action>, state: Observable<UiState>): Observable<Action> {

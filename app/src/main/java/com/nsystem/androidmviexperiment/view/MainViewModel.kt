@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.nsystem.androidmviexperiment.contract.mvi.Action
 import com.nsystem.androidmviexperiment.contract.mvi.MviView
 import com.nsystem.androidmviexperiment.mvi.middleware.SearchMiddleware
-import com.nsystem.androidmviexperiment.mvi.middleware.SuggestionsMiddleware
+import com.nsystem.androidmviexperiment.mvi.middleware.SuggestionMiddleware
 import com.nsystem.androidmviexperiment.mvi.reducer.SearchReducer
 import com.nsystem.androidmviexperiment.repository.api.Api
 import com.nsystem.androidmviexperiment.repository.api.ChampionApi
@@ -28,7 +28,7 @@ class MainViewModel: ViewModel() {
         SearchReducer(),
         listOf(
             SearchMiddleware(api, uiScheduler),
-            SuggestionsMiddleware(api, uiScheduler)
+            SuggestionMiddleware(api, uiScheduler)
         ),
         uiScheduler,
         UiState()

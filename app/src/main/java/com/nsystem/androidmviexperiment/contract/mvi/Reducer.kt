@@ -7,5 +7,8 @@ package com.nsystem.androidmviexperiment.contract.mvi
  */
 interface Reducer<A: Action, S: State> {
 
+    /**
+     * return state based on the actions executed
+     */
     fun reduce(state: S, action: A): S
 }

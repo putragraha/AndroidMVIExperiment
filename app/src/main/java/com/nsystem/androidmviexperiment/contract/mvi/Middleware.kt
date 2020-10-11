@@ -9,5 +9,9 @@ import io.reactivex.Observable
  */
 interface Middleware<A: Action, S: State> {
 
+    /**
+     * @method bind
+     * execute chains of actions
+     */
     fun bind(actions: Observable<A>, state: Observable<S>): Observable<A>
 }
