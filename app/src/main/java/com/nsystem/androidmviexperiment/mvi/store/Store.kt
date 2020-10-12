@@ -39,6 +39,9 @@ class Store<A : Action, S : State>(
      */
     fun wire(): Disposable {
         return CompositeDisposable().apply {
+            add(Observable.merge(middlewares.map { // merge used to enable applying bind logic to each middlewares here
+                it.bind(actionsRelay, stateRelay)
+            }).subscribe(actionsRelay::accept))
             add(
                 actionsRelay
                     .withLatestFrom(stateRelay) { action, state ->
@@ -47,9 +50,6 @@ class Store<A : Action, S : State>(
                     .distinctUntilChanged()
                     .subscribe(stateRelay::accept)
             )
-            add(Observable.merge(middlewares.map { // merge used to enable applying bind logic to each middlewares here
-                it.bind(actionsRelay, stateRelay)
-            }).subscribe(actionsRelay::accept))
         }
     }
 
@@ -59,8 +59,8 @@ class Store<A : Action, S : State>(
      */
     fun bind(view: MviView<A, S>): Disposable {
         return CompositeDisposable().apply {
-            add(stateRelay.observeOn(uiScheduler).subscribe(view::render))
             add(view.actions.subscribe(actionsRelay::accept))
+            add(stateRelay.observeOn(uiScheduler).subscribe(view::render))
         }
     }
 }
