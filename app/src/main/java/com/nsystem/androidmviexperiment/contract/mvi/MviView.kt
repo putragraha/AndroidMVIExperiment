@@ -8,6 +8,10 @@ import io.reactivex.Observable
  */
 interface MviView<A: Action, S: State> {
 
+    /**
+     * actions here represent Intents in MVI, in this project will cover
+     * UiAction.SearchAction & UiAction.LoadSuggestionAction
+     */
     val actions: Observable<A>
 
     /**

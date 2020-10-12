@@ -8,7 +8,6 @@ import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.BiFunction
 
 
 /**
@@ -30,12 +29,18 @@ class Store<A : Action, S : State>(
 
     /**
      * It's using relay to enable continuous stream, as relay works as Observable and Consumer, and only have onNext
-     * actions will be used by Middleware to execute the action (Search or Load Suggestion)
+     * actions will be used by Middleware to execute the action of UiAction (Search or Load Suggestion)
      */
     private val actionsRelay = PublishRelay.create<A>()
 
     /**
-     * Chaining stateRelay and actionRelay with operators here, and get the disposable to be able for disposed in ViewModel
+     * Wire UiAction with respective Middleware, so Middleware may produce SearchAction (transform
+     * UiAction to SearchAction)
+     *
+     * Setup actionsRelay to call reducer to produce State, after State returned from Reducer
+     * it will emit stateRelay::accept (emit onNext in stateRelay)
+     *
+     * @return Disposable so ViewModel may be able to dispose Observables
      */
     fun wire(): Disposable {
         return CompositeDisposable().apply {
@@ -54,7 +59,9 @@ class Store<A : Action, S : State>(
     }
 
     /**
-     * subsribing to action relay based on actions executed due to user input
+     * subscribe to action relay by call actionsRelay::accept (emit onNext in actionsRelay) based on
+     * actions executed due to user input (UiAction)
+     *
      * subscribe to view render based on latest emitted state in state relay
      */
     fun bind(view: MviView<A, S>): Disposable {
