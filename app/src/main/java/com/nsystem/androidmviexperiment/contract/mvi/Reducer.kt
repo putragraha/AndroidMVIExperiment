@@ -2,13 +2,7 @@ package com.nsystem.androidmviexperiment.contract.mvi
 
 
 /**
- * @author Putra Nugraha (putra.nugraha@dana.id)
- * @version Reducer, v 0.0.1 11/10/20 15.50 by Putra Nugraha
+ * @author Putra Nugraha (putra.nugraha@accenture.com)
+ * @version Reducer, v 0.0.2 28/07/21 23.31 by Putra Nugraha
  */
-interface Reducer<A: Action, S: State> {
-
-    /**
-     * return state based on the actions executed
-     */
-    fun reduce(state: S, action: A): S
-}
+interface Reducer

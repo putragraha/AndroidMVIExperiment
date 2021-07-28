@@ -1,4 +1,4 @@
-package com.nsystem.androidmviexperiment.repository.api
+package com.nsystem.androidmviexperiment.repository.source
 
 import com.nsystem.androidmviexperiment.model.Champion
 

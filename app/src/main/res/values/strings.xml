@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidMVIExperiment</string>
+    <string name="label_go">GO</string>
+    <string name="label_search">Search</string>
 </resources>

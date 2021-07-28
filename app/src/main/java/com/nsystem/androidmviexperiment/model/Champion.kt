@@ -8,4 +8,4 @@ package com.nsystem.androidmviexperiment.model
 /**
  * data class
  */
-data class Champion(val name: String = "Null Champion", val lane: String = "No lane")
+data class Champion(val name: String = "", val lane: String = "")
