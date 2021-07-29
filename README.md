@@ -8,4 +8,4 @@ MVI pattern is architecture for maintaining presentation logic i.e. state of the
 
 ## Features
 - For Rx built use branch `rx-java`
-- For Coroutine with Flow built use branch `master`
+- For Coroutine with Flow built use branch `master` (bonus: Android DataBinding)
